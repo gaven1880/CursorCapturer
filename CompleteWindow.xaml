@@ -1,0 +1,26 @@
+﻿<Window x:Class="CursorCapturer.CompleteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Recording finished"
+        Width="384"
+        Height="192"
+        WindowStartupLocation="CenterScreen">
+  <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+    <TextBlock Text="Recording finished!"
+               FontSize="24"
+               FontWeight="Bold"
+               HorizontalAlignment="Center" />
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+      <Button Content="Save as JSON"
+              Width="128"
+              Height="32"
+              Margin="8"
+              Click="OnSaveClick" />
+      <Button Content="Record again"
+              Width="128"
+              Height="32"
+              Margin="8"
+              Click="OnRecordAgainClick" />
+    </StackPanel>
+  </StackPanel>
+</Window>

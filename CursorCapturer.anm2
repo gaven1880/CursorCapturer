@@ -1,0 +1,53 @@
+--file@raw:Data
+local json = require("json")
+local f = io.open(raw, "r")
+local content = f and f:read("*a") or ""
+if f then f:close() end
+local data = json.decode(content)
+
+local function lerp(progress, from, to)
+  local diff = to - from
+  return from + (diff * progress)
+end
+
+if not data.fps or not data.keyframes or #data.keyframes == 0 then
+  error("Invalid data.")
+end
+
+local normalized_frame = math.floor((data.fps / obj.framerate) * obj.frame)
+
+local function get_sorrounding_keyframes(keyframes, frame)
+  local before
+  local after
+
+  for _, keyframe in ipairs(keyframes) do
+    if keyframe.frame <= frame then
+        before = keyframe
+    elseif keyframe.frame > frame then
+        after = keyframe
+        break
+    end
+  end
+
+  return before or after, after or before
+end
+
+table.sort(data.keyframes, function (a, b)
+  return a.frame < b.frame
+end)
+
+local keyframes = data.keyframes
+
+local before, after = get_sorrounding_keyframes(keyframes, normalized_frame)
+
+local ox = (obj.screen_w - obj.w) / -2
+local oy = (obj.screen_h - obj.h) / -2
+
+local gap = after.frame - before.frame
+local progress = gap == 0 and 0 or (normalized_frame - before.frame) / gap
+
+ox = ox + lerp(progress, before.x, after.x)
+oy = oy + lerp(progress, before.y, after.y)
+
+obj.ox = obj.ox + ox
+obj.oy = obj.oy + oy

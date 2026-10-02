@@ -1,0 +1,19 @@
+﻿<Window x:Class="CursorCapturer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CursorCapturer v1.0.0"
+        Width="384"
+        Height="192"
+        WindowStartupLocation="CenterScreen">
+  <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+    <TextBlock Text="CursorCapturer"
+               FontSize="24"
+               FontWeight="Bold"
+               HorizontalAlignment="Center" />
+    <Button Content="Import video"
+            Width="128"
+            Height="32"
+            Margin="12"
+            Click="OnImportClick" />
+  </StackPanel>
+</Window>

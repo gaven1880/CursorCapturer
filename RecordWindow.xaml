@@ -1,0 +1,38 @@
+﻿<Window x:Class="CursorCapturer.RecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vlc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
+        WindowStyle="None"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        Topmost="True"
+        Background="Black"
+        SourceInitialized="OnWindowSourceInitialized"
+        Loaded="OnWindowLoadedAsync"
+        Closed="OnWindowClosed">
+  <!-- The video fills the window; everything inside VideoView is drawn on top of it. -->
+  <vlc:VideoView x:Name="VideoView">
+    <Grid>
+      <!-- Dims the video so the cursor, which Windows draws on top of it, stays clear. -->
+      <Rectangle Fill="#7FBFBFBF" IsHitTestVisible="False" />
+      <Border VerticalAlignment="Top"
+              Height="56"
+              Background="#7F7F7F7F">
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Margin="16,0">
+          <Button x:Name="PlayPauseButton"
+                  Content="Play (F8)"
+                  Width="110"
+                  Height="34"
+                  Click="OnPlayPauseClick" />
+          <TextBlock x:Name="StatusText"
+                     Foreground="White"
+                     FontSize="16"
+                     VerticalAlignment="Center"
+                     Margin="16,0,0,0" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </vlc:VideoView>
+</Window>
