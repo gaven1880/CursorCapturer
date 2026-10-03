@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using System.Text.Json;
 using System.Windows;
 using Microsoft.Win32;
@@ -18,6 +19,9 @@ public partial class CompleteWindow : Window
   {
     InitializeComponent();
     _recording = recording;
+
+    var assembly = Assembly.GetExecutingAssembly();
+    Title = $"{assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product} v{assembly.GetName().Version?.ToString(3) ?? "0.0.0"}";
   }
 
   private void OnSaveClick(object sender, RoutedEventArgs e)

@@ -36,5 +36,5 @@ Example:
 | `keyframes[].x` and `keyframes[].y` | Captured position (aligned top-left)       |
 
 ## Building
-All you need is just Windows and the .NET 10 SDK. Just run:
-`dotnet build`
+All you need is just the .NET 10 SDK. Just run `dotnet build`.
+If you want it automatically zipped with a version number, you also need a minimum of Windows 10 build 17063. Run `build vx.x.x` in CMD (replace x.x.x with version number, e.g. 1.0.0)

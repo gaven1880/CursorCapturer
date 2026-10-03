@@ -5,7 +5,6 @@
         WindowStyle="None"
         WindowState="Maximized"
         ResizeMode="NoResize"
-        Topmost="True"
         Background="Black"
         SourceInitialized="OnWindowSourceInitialized"
         Loaded="OnWindowLoadedAsync"

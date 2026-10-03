@@ -1,9 +1,9 @@
 ﻿<Window x:Class="CursorCapturer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CursorCapturer v1.0.0"
         Width="384"
         Height="192"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
   <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
     <TextBlock Text="CursorCapturer"

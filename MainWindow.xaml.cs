@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 using Microsoft.Win32;
 
 namespace CursorCapturer;
@@ -10,6 +11,9 @@ public partial class MainWindow : Window
   public MainWindow()
   {
     InitializeComponent();
+
+    var assembly = Assembly.GetExecutingAssembly();
+    Title = $"{assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product} v{assembly.GetName().Version?.ToString(3) ?? "0.0.0"}";
   }
 
   private void OnImportClick(object sender, RoutedEventArgs e)

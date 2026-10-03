@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
@@ -75,6 +76,9 @@ public partial class RecordWindow : Window
     _videoPath = videoPath;
     _player = new MediaPlayer(App.LibVLC);
     _media = new Media(App.LibVLC, new Uri(videoPath));
+
+    var assembly = Assembly.GetExecutingAssembly();
+    Title = $"{assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product} v{assembly.GetName().Version?.ToString(3) ?? "0.0.0"}";
   }
 
   private void OnWindowSourceInitialized(object? sender, EventArgs e)
